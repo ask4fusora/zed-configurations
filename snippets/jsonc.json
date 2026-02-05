@@ -1,0 +1,112 @@
+{
+  "lsp:rust_analyzer:configuration - Inlay hints": {
+    "prefix": "zed:lsp:rust_analyzer:c:inlayHints",
+    "body": [
+      "\"inlayHints\": {",
+      "  \"maxLength\": null,",
+      "  \"bindingModeHints\": { \"enable\": true },",
+      "  \"closingBraceHints\": { \"minLines\": 0 },",
+      "  \"closureCaptureHints\": { \"enable\": true },",
+      "  \"closureReturnTypeHints\": { \"enable\": \"always\" },",
+      "  \"discriminantHints\": { \"enable\": \"always\" },",
+      "  \"expressionAdjustmentHints\": { \"enable\": \"reborrow\" }, // Only for learning occasions.",
+      "  \"genericParameterHints\": {",
+      "    \"lifetime\": { \"enable\": true },",
+      "    \"type\": { \"enable\": true }",
+      "  },",
+      "  \"implicitSizedBoundHints\": { \"enable\": true },",
+      "  \"lifetimeElisionHints\": {",
+      "    \"enable\": \"skip_trivial\",",
+      "    \"useParameterNames\": true",
+      "  },",
+      "  \"rangeExclusiveHints\": { \"enable\": true },",
+      "  \"reborrowHints\": { \"enable\": \"mutable\" } // Only for learning occasions.",
+      "}"
+    ],
+    "description": "lsp:rust_analyzer - Inlay hints configuration"
+  },
+
+  "lsp:tinymist:configuration - Formatter mode": {
+    "prefix": "zed:lsp:tinymist:c:formatterMode",
+    "body": ["\"formatterMode\": \"typstyle\""],
+    "description": "lsp:tinymist - Formatter mode configuration"
+  },
+
+  "lsp:lua-language-server:configuration - Inlay hints": {
+    "prefix": "zed:lsp:lua-language-server:c:hint",
+    "body": [
+      "\"hint\": {",
+      "  \"arrayIndex\": true,",
+      "  \"await\": true,",
+      "  \"awaitPropagate\": true,",
+      "  \"enable\": true,",
+      "  \"paramName\": true,",
+      "  \"paramType\": true,",
+      "  \"semicolon\": true,",
+      "  \"setType\": true",
+      "}"
+    ],
+    "description": "lsp:lua-language-server - Inlay hints configuration"
+  },
+
+  "lsp:clangd:binaryArgs - Recommended": {
+    "prefix": "zed:lsp:clangd:ba:recommended",
+    "body": [
+      "\"-j=4\",",
+      "\"--pch-storage=memory\",",
+      "\"--all-scopes-completion\",",
+      "\"--clang-tidy\",",
+      "\"--completion-style=detailed\",",
+      "\"--header-insertion=iwyu\",",
+      "\"--rename-file-limit=0\",",
+      "\"--pretty\""
+    ],
+    "description": "lsp:clangd:binaryArgs - Recommended"
+  },
+
+  "formatter:e:biome - Format JSON with CLI": {
+    "prefix": "zed:formatter:e:biome:jsonc",
+    "body": [
+      "{",
+      "  \"external\": {",
+      "    \"command\": \"biome\",",
+      "    \"arguments\": [",
+      "      \"format\",",
+      "      \"--vcs-enabled=false\",",
+      "      \"--stdin-file-path={buffer_path}\",",
+      "",
+      "      \"--json-formatter-indent-width=2\",",
+      "      \"--json-formatter-indent-style=space\",",
+      "      \"--json-formatter-line-width=100\",",
+      "      \"--json-formatter-line-ending=lf\"",
+      "    ]",
+      "  }",
+      "}"
+    ],
+    "description": "formatter:e:biome - Format JSONC with CLI"
+  },
+
+  "formatter:e:biome - Format JSONC with CLI": {
+    "prefix": "zed:formatter:e:biome:jsonc",
+    "body": [
+      "{",
+      "  \"external\": {",
+      "    \"command\": \"biome\",",
+      "    \"arguments\": [",
+      "      \"format\",",
+      "      \"--vcs-enabled=false\",",
+      "      \"--json-parse-allow-comments=true\",",
+      "      \"--json-parse-allow-trailing-commas=true\",",
+      "      \"--stdin-file-path={buffer_path}\",",
+      "",
+      "      \"--json-formatter-indent-width=2\",",
+      "      \"--json-formatter-indent-style=space\",",
+      "      \"--json-formatter-line-width=100\",",
+      "      \"--json-formatter-line-ending=lf\"",
+      "    ]",
+      "  }",
+      "}"
+    ],
+    "description": "formatter:e:biome - Format JSONC with CLI"
+  }
+}

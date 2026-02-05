@@ -1,0 +1,428 @@
+// $file_finder
+// $tab_switcher
+// $dock_and_pane
+// $outline_panel
+// $tab
+// $search
+// $vim
+// $tag_stack
+// $multibuffer
+// $lsp_goto
+// $diagnostics
+// $inline_assistant
+// $edit_prediction
+// $agent_diff
+// $debug_panel
+// $terminal
+// $per_file_extension
+
+[
+  // ===
+  // $file_finder
+  // ===
+
+  {
+    "context": "FileFinder || (FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-p": "menu::SelectPrevious" // @deprecated `file_finder::Toggle`
+    }
+  },
+
+  // ===
+  // $tab_switcher
+  // ===
+
+  {
+    "context": "!Dock && ((!Editor && !Terminal) || (VimControl && !menu))",
+    "bindings": {
+      "tab": "tab_switcher::ToggleAll"
+    }
+  },
+
+  {
+    "context": "TabSwitcher || (TabSwitcher > Picker > Editor)",
+    "bindings": {
+      "ctrl-backspace": "tab_switcher::CloseSelectedItem"
+    }
+  },
+
+  //
+  // $dock_and_pane
+  //
+
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-alt-j": "workspace::ToggleBottomDock",
+      "ctrl-alt-b": "workspace::ToggleLeftDock",
+      "ctrl-alt-B": "workspace::ToggleRightDock",
+
+      "alt-shift-=": ["workspace::IncreaseActiveDockSize", { "px": 89 }],
+      "alt-shift--": ["workspace::DecreaseActiveDockSize", { "px": 89 }]
+    }
+  },
+
+  {
+    "context": "VimControl || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-w e": "workspace::CloseAllDocks",
+      "ctrl-w f": "workspace::ToggleCenteredLayout"
+    }
+  },
+
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space w h": "pane::SplitAndMoveLeft",
+      "space w l": "pane::SplitAndMoveRight",
+      "space w j": "pane::SplitAndMoveDown",
+      "space w k": "pane::SplitAndMoveUp"
+    }
+  },
+
+  {
+    "context": "VimControl || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-w m": "pane::JoinIntoNext",
+      "ctrl-w M": "pane::JoinAll"
+    }
+  },
+
+  //
+  // $outline_panel
+  //
+
+  {
+    "context": "OutlinePanel && not_editing",
+    "bindings": {
+      "space": null, // @deprecated `outline_panel::OpenSelectedEntry`
+
+      "h": "outline_panel::CollapseSelectedEntry",
+      "l": "outline_panel::ExpandSelectedEntry",
+      "enter": "outline_panel::OpenSelectedEntry"
+    }
+  },
+
+  {
+    "context": "OutlinePanel > Editor",
+    "bindings": {
+      "enter": "menu::Cancel",
+
+      "ctrl-w": "editor::DeleteToPreviousSubwordStart"
+    }
+  },
+
+  //
+  // $tab
+  //
+
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "[ b": "vim::GoToPreviousTab",
+      "] b": "vim::GoToTab"
+    }
+  },
+
+  //
+  // $search
+  //
+
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "*": "vim::SearchUnderCursor",
+      "#": "vim::SearchUnderCursorPrevious"
+    }
+  },
+
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-l": "search::ToggleSelection",
+
+      "alt-f": "project_search::ToggleFilters",
+      "alt-i": "search::ToggleIncludeIgnored",
+
+      "alt-h": "search::ToggleReplace"
+    }
+  },
+
+  {
+    "context": "(BufferSearchBar || ProjectSearchBar) > Editor",
+    "bindings": {
+      "ctrl-w": "editor::DeleteToPreviousSubwordStart",
+      "ctrl-W": "editor::DeleteToPreviousWordStart"
+    }
+  },
+
+  {
+    "context": "(BufferSearchBar || ProjectSearchBar) && !in_replace > Editor",
+    "bindings": {
+      "ctrl-g a": "search::SelectAllMatches"
+    }
+  },
+
+  {
+    "context": "(BufferSearchBar || ProjectSearchBar) && in_replace > Editor",
+    "bindings": {
+      "enter": null, // @deprecated `search::ReplaceNext`
+      "ctrl-alt-enter": null, // @deprecated `search::ReplaceAll`
+
+      "ctrl-enter": "search::ReplaceNext",
+      "ctrl-shift-enter": "search::ReplaceAll"
+    }
+  },
+
+  //
+  // $vim
+  //
+
+  {
+    "context": "(vim_mode == normal && !menu) || vim_mode == visual",
+    "bindings": {
+      "alt-v": "editor::SelectEnclosingSymbol"
+    }
+  },
+
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::MiniQuotes",
+      "b": "vim::MiniBrackets"
+    }
+  },
+
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space s": "vim::PushSneak",
+      "space S": "vim::PushSneakBackward"
+    }
+  },
+
+  {
+    "context": "vim_mode == normal || vim_mode == visual || vim_mode == operator",
+    "bindings": {
+      "] h": "editor::GoToNextDocumentHighlight",
+      "[ h": "editor::GoToPreviousDocumentHighlight"
+    }
+  },
+
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "left": "vim::WrappingLeft",
+      "right": "vim::WrappingRight",
+      "h": "vim::WrappingLeft",
+      "l": "vim::WrappingRight"
+    }
+  },
+
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "X": "vim::Exchange" // @deprecated `vim::VisualDeleteLine`
+    }
+  },
+
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "S": "vim::PushAddSurrounds", // @deprecated `vim::SubstituteLine`
+      "R": [
+        // @deprecated `vim::SubstituteLine`
+        "action::Sequence",
+        ["editor::WrapSelectionsInTag", "vim::SwitchToNormalMode"]
+      ]
+    }
+  },
+
+  {
+    "context": "renaming > Editor",
+    "bindings": {
+      "ctrl-W": "editor::DeleteToPreviousWordStart",
+      "ctrl-w": "editor::DeleteToPreviousSubwordStart"
+    }
+  },
+
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "Y": "vim::YankToEndOfLine"
+    }
+  },
+
+  {
+    "context": "vim_mode == insert && showing_completions",
+    "bindings": {
+      "shift-enter": "editor::Newline"
+    }
+  },
+
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "shift shift": "editor::Cancel"
+    }
+  },
+
+  //
+  // $tag_stack
+  //
+
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-t": null, // @deprecated `pane::GoToOlderTag`
+
+      "ctrl-]": "pane::GoToNewerTag",
+      "ctrl-[": "pane::GoToOlderTag"
+    }
+  },
+
+  //
+  // $multibuffer
+  //
+
+  {
+    "context": "VimControl && !menu && multibuffer",
+    "bindings": {
+      "g g": "editor::MoveToStartOfExcerpt",
+      "G": "editor::MoveToEndOfExcerpt",
+      "space g g": "vim::StartOfDocument",
+      "space G": "vim::EndOfDocument",
+      "[ E": "editor::MoveToEndOfPreviousExcerpt",
+      "] E": "editor::MoveToStartOfNextExcerpt"
+    }
+  },
+
+  //
+  // $lsp_goto
+  //
+
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space g d": "editor::GoToDefinitionSplit",
+      "space g y": "editor::GoToTypeDefinitionSplit",
+      "space g D": "editor::GoToDeclarationSplit",
+      "space g I": "editor::GoToImplementationSplit"
+    }
+  },
+
+  //
+  // $inline_assistant
+  //
+
+  {
+    "context": "InlineAssistant",
+    "bindings": {
+      "alt-?": "agent::ToggleModelSelector"
+    }
+  },
+
+  {
+    "context": "InlineAssistant",
+    "bindings": {
+      "ctrl-w": "editor::DeleteToPreviousWordStart" // @deprecated `pane::CloseActiveItem`
+    }
+  },
+
+  //
+  // $diagnostics
+  //
+
+  {
+    "context": "Diagnostics",
+    "bindings": {
+      "f5": "diagnostics::ToggleDiagnosticsRefresh"
+    }
+  },
+
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "] D": ["editor::GoToDiagnostic", { "severity": "error" }],
+      "[ D": ["editor::GoToPreviousDiagnostic", { "severity": "error" }]
+    }
+  },
+
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "] D": ["project_panel::SelectNextDiagnostic", { "severity": "error" }],
+      "[ D": ["project_panel::SelectPrevDiagnostic", { "severity": "error" }]
+    }
+  },
+
+  //
+  // $edit_prediction
+  //
+
+  {
+    "context": "Editor && (edit_prediction || edit_prediction_conflict)",
+    "bindings": {
+      "alt-k": "editor::AcceptNextWordEditPrediction"
+    }
+  },
+
+  //
+  // $agent_diff
+  //
+
+  {
+    "context": "(AgentDiff || (Editor && editor_agent_diff)) && !menu",
+    "bindings": {
+      "ctrl-n": null, // @deprecated `agent::Reject`
+      "ctrl-y": null, // @deprecated `agent::Keep`
+
+      "ctrl-alt-n": "agent::Reject",
+      "ctrl-alt-y": "agent::Keep"
+    }
+  },
+
+  //
+  // $debug_panel
+  //
+
+  {
+    "context": "DebugPanel",
+    "bindings": {
+      "ctrl-g b": "debugger::FocusBreakpointList",
+      "ctrl-g v": "debugger::FocusVariables",
+      "ctrl-g c": "debugger::FocusConsole",
+      "ctrl-g s": "debugger::FocusLoadedSources",
+      "ctrl-g t": "debugger::FocusTerminal",
+      "ctrl-g m": "debugger::FocusModules",
+      "ctrl-g f": "debugger::FocusFrames"
+    }
+  },
+
+  //
+  // $terminal
+  //
+
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-r": ["terminal::SendKeystroke", "ctrl-r"],
+      "ctrl-t": ["terminal::SendKeystroke", "ctrl-t"],
+      "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+      "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"]
+    }
+  },
+
+  //
+  // $per_file_extension
+  //
+
+  // $per_file_extension: md
+
+  {
+    "context": "extension == md && vim_mode == visual",
+    "bindings": {
+      "ctrl-K": ["workspace::SendKeystrokes", "c [ ] escape P l a ( ) escape"] // @deprecated `editor::DeleteLine`
+    }
+  }
+]

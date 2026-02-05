@@ -1,0 +1,62 @@
+{
+  // $formatter
+
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+
+  // $language-specific
+
+  "languages": {
+    "JSON": {
+      "language_servers": ["json-language-server"],
+
+      "tab_size": 2,
+      "preferred_line_length": 100,
+
+      "formatter": [
+        {
+          "external": {
+            "command": "biome",
+            "arguments": [
+              "format",
+              "--vcs-enabled=false",
+              "--stdin-file-path={buffer_path}",
+
+              "--json-formatter-indent-width=2",
+              "--json-formatter-indent-style=space",
+              "--json-formatter-line-width=100",
+              "--json-formatter-line-ending=lf"
+            ]
+          }
+        }
+      ]
+    },
+
+    "JSONC": {
+      "language_servers": ["json-language-server"],
+
+      "tab_size": 2,
+      "preferred_line_length": 100,
+
+      "formatter": [
+        {
+          "external": {
+            "command": "biome",
+            "arguments": [
+              "format",
+              "--vcs-enabled=false",
+              "--json-parse-allow-comments=true",
+              "--json-parse-allow-trailing-commas=true",
+              "--stdin-file-path={buffer_path}",
+
+              "--json-formatter-indent-width=2",
+              "--json-formatter-indent-style=space",
+              "--json-formatter-line-width=100",
+              "--json-formatter-line-ending=lf"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
