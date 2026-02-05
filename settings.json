@@ -510,6 +510,9 @@
 
     // Configuration
 
+    "file_icons": false,
+    "folder_icons": false,
+    "bold_folder_labels": true,
     "hide_root": true,
     "hide_hidden": false,
     "hide_gitignore": false,
@@ -622,7 +625,7 @@
   },
 
   "tabs": {
-    "file_icons": true,
+    "file_icons": false,
     "git_status": true,
     "show_diagnostics": "all"
   },
