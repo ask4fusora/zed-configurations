@@ -344,7 +344,7 @@
   "lsp_document_colors": "background",
 
   "auto_signature_help": false,
-  "show_signature_help_after_edits": true,
+  "show_signature_help_after_edits": false,
 
   "hover_popover_delay": 200,
 
