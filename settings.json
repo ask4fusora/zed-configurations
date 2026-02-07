@@ -215,14 +215,14 @@
     // $agent/thread_summary
 
     "thread_summary_model": {
-      "model": "claude-opus-4.5",
+      "model": "claude-opus-4.6",
       "provider": "copilot_chat"
     },
 
     // $agent/commit_message
 
     "commit_message_model": {
-      "model": "claude-opus-4.5",
+      "model": "gpt-5.2-codex",
       "provider": "copilot_chat"
     }
   },
