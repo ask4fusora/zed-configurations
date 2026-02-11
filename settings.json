@@ -150,9 +150,21 @@
 
   "language_models": {
     "openai_compatible": {
-      "From OpenAI": {
+      "OpenAI Complementary 250K tokens/day": {
         "api_url": "https://api.openai.com/v1",
         "available_models": [
+          {
+            "name": "gpt-5.2",
+            "max_tokens": 400000,
+            "max_output_tokens": 128000,
+            "capabilities": {
+              "chat_completions": false,
+              "images": true,
+              "parallel_tool_calls": true,
+              "tools": true,
+              "prompt_cache_key": false
+            }
+          },
           {
             "name": "gpt-5.1-codex",
             "max_tokens": 400000,
@@ -164,7 +176,13 @@
               "tools": true,
               "prompt_cache_key": false
             }
-          },
+          }
+        ]
+      },
+
+      "OpenAI Complementary 250M tokens/day": {
+        "api_url": "https://api.openai.com/v1",
+        "available_models": [
           {
             "name": "gpt-5.1-codex-mini",
             "max_tokens": 400000,
@@ -187,8 +205,8 @@
   "agent": {
     "default_profile": "write",
     "default_model": {
-      "provider": "From OpenAI",
-      "model": "gpt-5.1-codex-mini"
+      "provider": "OpenAI Complementary 250k tokens/day",
+      "model": "gpt-5.1-codex"
     },
 
     // UI
