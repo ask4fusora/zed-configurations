@@ -98,7 +98,7 @@
     }
   },
 
-  "language_servers": ["!eslint", "..."],
+  "language_servers": ["!eslint", "!protobuf-language-server", "!protols", "..."],
 
   // $debugger
 
