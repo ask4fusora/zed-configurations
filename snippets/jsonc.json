@@ -1,4 +1,23 @@
 {
+  "lsp:basedpyright:configuration - Recommended": {
+    "prefix": "zed:lsp:basedpyright:c:recommended",
+    "body": [
+      "\"basedpyright.disableOrganizeImports\": true, // Why: To prefer `ruff`.",
+      "\"basedpyright.disableTaggedHints\": false,",
+      "\"basedpyright.analysis\": {",
+      "  \"autoImportCompletions\": true,",
+      "  \"diagnosticMode\": \"workspace\",",
+      "  \"inlayHints\": {",
+      "    \"variableTypes\": true,",
+      "    \"callArgumentNames\": true,",
+      "    \"functionReturnTypes\": true,",
+      "    \"genericTypes\": true,",
+      "  },",
+      "}"
+    ],
+    "description": "lsp:basedpyright:configuration - Recommended"
+  },
+
   "lsp:rust_analyzer:configuration - Inlay hints": {
     "prefix": "zed:lsp:rust_analyzer:c:inlayHints",
     "body": [
