@@ -314,8 +314,7 @@
 
   "search": {
     "button": false /* $layout/status_bar */,
-
-    "center_on_match": true
+    "center_on_match": false
   },
   "use_smartcase_search": true,
   "seed_search_query_from_cursor": "selection",
