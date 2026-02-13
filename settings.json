@@ -180,7 +180,7 @@
         ]
       },
 
-      "OpenAI Complementary 250M tokens/day": {
+      "OpenAI Complementary 2.5M tokens/day": {
         "api_url": "https://api.openai.com/v1",
         "available_models": [
           {
